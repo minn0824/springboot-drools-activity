@@ -1,0 +1,21 @@
+package ruls;
+import com.minn.springbootdroolsactivity.model.Leave;
+rule "leave1"
+    no-loop true
+    lock-on-active true
+    salience 1
+    when
+        tu : Leave(day < 3);
+    then
+        tu.setTotal(tu.getDay() + 2);
+end
+
+rule "leave2"
+    no-loop true
+    lock-on-active true
+    salience 2
+    when
+        tu : Leave(day >= 3);
+    then
+        tu.setTotal(tu.getDay() + 5);
+end

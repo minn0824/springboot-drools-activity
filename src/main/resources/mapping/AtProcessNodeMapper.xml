@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.minn.springbootdroolsactivity.mapper.AtProcessNodeMapper">
+    <resultMap id="BaseResultMap" type="com.minn.springbootdroolsactivity.entity.AtProcessNode">
+        <result column="id" property="id"/>
+        <result column="template_id" property="templateId"/>
+        <result column="process_node_type" property="processNodeType"/>
+        <result column="node_id" property="nodeId"/>
+        <result column="node_name" property="nodeName"/>
+        <result column="pre_node_id" property="preNodeId"/>
+        <result column="next_node_id" property="nextNodeId"/>
+        <result column="node_attribute_1" property="nodeAttribute1"/>
+        <result column="node_attribute_2" property="nodeAttribute2"/>
+        <result column="node_attribute_3" property="nodeAttribute3"/>
+        <result column="node_attribute_4" property="nodeAttribute4"/>
+        <result column="node_attribute_5" property="nodeAttribute5"/>
+    </resultMap>
+
+    <select id="selectRuslt" resultMap="BaseResultMap">
+        SELECT node_id,node_name,node_attribute_1,node_attribute_2,node_attribute_3,node_attribute_4,node_attribute_5
+        from at_process_node where template_id = #{templateId} and process_node_type = #{processNodeType}
+    </select>
+
+    <select id="selectNodeId" resultMap="BaseResultMap">
+        SELECT * from at_process_node where template_id = #{templateId} and process_node_type in(1,2,3);
+    </select>
+</mapper>
